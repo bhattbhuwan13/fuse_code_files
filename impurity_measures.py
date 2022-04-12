@@ -38,12 +38,9 @@ def compute_gini(class_frequencies):
         gini index for the given data.
   '''
   try:
-    p_i = 0
     total = sum(class_frequencies)
-    for x in class_frequencies:
-      p_i += (x/total)**2
-    gini = 1-p_i
-    return gini
+    p_i = sum((x/total)**2 for x in class_frequencies)
+    return 1-p_i
 
   except ZeroDivisionError:
     return 0
